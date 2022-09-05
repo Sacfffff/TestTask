@@ -64,7 +64,7 @@ final class PlayerControlsView : UIView {
         let button = UIButton()
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(systemName: "backward.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34.0, weight: .regular))
+        let image = UIImage(systemName: "backward.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30.0, weight: .regular))
         button.setImage(image, for: .normal)
         return button
     }()
@@ -72,7 +72,7 @@ final class PlayerControlsView : UIView {
     private let nextButton : UIButton = {
         let button = UIButton()
         button.tintColor = .label
-        let image = UIImage(systemName: "forward.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34.0, weight: .regular))
+        let image = UIImage(systemName: "forward.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30.0, weight: .regular))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
         return button
@@ -80,10 +80,18 @@ final class PlayerControlsView : UIView {
     
     private let playPauseButton : UIButton = {
         let button = UIButton()
+        button.backgroundColor = .systemGray4
         button.tintColor = .label
-        let image = UIImage(systemName: "pause.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34.0, weight: .regular))
+        button.setImage(UIImage(
+            systemName: "pause.fill",
+            withConfiguration: UIImage.SymbolConfiguration(
+                pointSize: 30.0,
+                weight: .medium)), for: .normal)
+        button.layer.shadowColor = UIColor.gray.cgColor
+        button.layer.cornerRadius = 30.0
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 10.0
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(image, for: .normal)
         return button
     }()
     
@@ -157,8 +165,8 @@ final class PlayerControlsView : UIView {
     }
     
     private func updatePlayPauseButton(){
-        let pause = UIImage(systemName: "pause.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34.0, weight: .regular))
-        let play = UIImage(systemName: "play.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34.0, weight: .regular))
+        let pause = UIImage(systemName: "pause.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25.0, weight: .regular))
+        let play = UIImage(systemName: "play.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25.0, weight: .regular))
         
         playPauseButton.setImage(isPlaying ? pause : play, for: .normal)
     }
@@ -223,13 +231,13 @@ final class PlayerControlsView : UIView {
                 //backwardButton
                 backwardButton.topAnchor.constraint(equalTo: playPauseButton.topAnchor),
                 backwardButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0),
-                backwardButton.rightAnchor.constraint(equalTo: playPauseButton.leftAnchor, constant: 5.0),
+                backwardButton.rightAnchor.constraint(equalTo: playPauseButton.leftAnchor),
                 backwardButton.heightAnchor.constraint(equalToConstant: 60.0),
                 
                 //nextButton
                 nextButton.topAnchor.constraint(equalTo: playPauseButton.topAnchor),
                 nextButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20.0),
-                nextButton.leftAnchor.constraint(equalTo: playPauseButton.rightAnchor, constant: 5.0),
+                nextButton.leftAnchor.constraint(equalTo: playPauseButton.rightAnchor),
                 nextButton.heightAnchor.constraint(equalToConstant: 60.0),
                 
                 

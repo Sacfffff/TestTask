@@ -14,13 +14,12 @@ protocol PlayerDataSource : AnyObject {
     var duration : Float {get}
 }
 
-
 final class Player {
     
     private var player : AVPlayer?
     private var track : AudioTrack?
+ 
 
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
